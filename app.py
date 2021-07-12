@@ -26,9 +26,7 @@ def recommend(movie):
 
 st.header("**Movie Recommender System**")
 
-movie_dict = pickle.load(open('finalmovie_list.pkl','rb'))
-movies = pd.DataFrame(movie_dict)
-#movies=pickle.load(open('finalmovie_list.pkl','rb'))
+movies=pd.read_pickle('finalmovie_list.pkl')
 similarity= pickle.load(open('finalsimilarity.pkl','rb'))
 
 movie_list = np.sort(movies['movie_name'].unique())
