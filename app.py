@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import numpy as np
 import requests
+import pandas as pd
 
 def fetch_poster(movie):
     url = "https://www.omdbapi.com/?apikey=21dcff44&t={}".format(movie)
@@ -24,6 +25,9 @@ def recommend(movie):
     return recommended_movie_names,recommended_movie_posters
 
 st.header("**Movie Recommender System**")
+
+movie_dict = pickle.load(open('finalmovie_list.pkl','rb'))
+movies = pd.DataFrame(movie_dict)
 
 movies=pickle.load(open('finalmovie_list.pkl','rb'))
 similarity= pickle.load(open('finalsimilarity.pkl','rb'))
